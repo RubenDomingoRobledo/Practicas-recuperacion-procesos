@@ -14,6 +14,7 @@ public class LanzaProcesoRuntime {
 		    while((line = reader.readLine()) != null){
                 System.out.println(line);
             }
+		    System.out.println("Valor de salida del proceso: " + ps.exitValue());
 		} 
 		catch (IOException e) {
 			e.printStackTrace();

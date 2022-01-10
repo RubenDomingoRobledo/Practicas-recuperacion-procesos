@@ -15,6 +15,7 @@ public class LanzaProcesoProcessBuilder {
 			while((line = reader.readLine())!= null) {
 				System.out.println(line);
 			}
+			System.out.println("Valor de salida del proceso: " + ps.exitValue());
 		}
 		catch (IOException e){
 			System.err.println("Error en la ejecución del proceso");
