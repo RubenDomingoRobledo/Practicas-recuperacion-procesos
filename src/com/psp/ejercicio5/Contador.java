@@ -4,13 +4,12 @@ class Contador {
 
 	private int contador = 0;
 
-	public int getCuenta() {
+	public synchronized int getCuenta() {
 		return contador;
 	}
 
-	public int incrementa() {
+	public synchronized int incrementa() {
 		this.contador++;
 		return contador;
 	}
-
 }
