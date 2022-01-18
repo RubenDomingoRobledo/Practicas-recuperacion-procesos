@@ -1,6 +1,6 @@
 package com.psp.ejercicio4;
 
-class Contador {
+public class Contador {
 	private int contador = 0;
 
 	public int getCuenta() {
