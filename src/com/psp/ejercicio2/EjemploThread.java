@@ -6,6 +6,7 @@ public class EjemploThread extends Thread {
 		
 		Thread hilo1 = new Thread(thread, "Blanco");
 		Thread hilo2 = new Thread(thread, "Negro");
+		
 		hilo1.start();
 		hilo2.start();
 	}

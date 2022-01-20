@@ -14,6 +14,14 @@ public class CuentaPares implements Runnable{
 			if (dp.isPar() == true) {
 				cont.incrementaPares();
 			}
+			else if (dp.isPar() == false) {
+				try {
+					wait();
+				} 
+				catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }

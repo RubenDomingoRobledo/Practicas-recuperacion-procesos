@@ -6,9 +6,9 @@ public class Main {
 	public static void main(String[] args) {
 		Contador c = new Contador();
 		int x = 1;
-		int y = 1000;
+		int y = 100000000;
 		long t0 = (new Date()).getTime();	
-		int nHilos= 5;
+		int nHilos= 100;
 		Thread[] hilos = new Thread[nHilos];
 		
 		for (int i = 0; i < nHilos; i++) {

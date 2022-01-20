@@ -5,7 +5,7 @@ public class CuentaPares implements Runnable{
 
 	@Override
 	public void run() {		
-		for (int i = 1; i <= 200; i++) {
+		for (int i = 1; i <= 20000000; i++) {
 			if (i % 2 == 0) {
 				cont.incrementaPares();
 				System.out.println(i+" es par");
