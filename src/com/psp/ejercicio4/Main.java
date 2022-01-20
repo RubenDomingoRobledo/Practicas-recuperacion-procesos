@@ -17,11 +17,14 @@ public class Main {
 		for (int i = 0; i < 10; i++) {
     		executorService.execute(cp); 
     	} 
-        executorService.shutdown();
-
+		executorService.shutdown();
+		
+		while (!executorService.isTerminated()) {
+        }
 		
 		long t1 = (new Date()).getTime();
 		long time = t1 - t0;
 		System.out.println("Número de pares en el intervalo: "+x+" - "+y+" es igual a "+ cp.cont.getCuenta() +" calculado en "+time+ " milisegundos");
+
 	}
 }
