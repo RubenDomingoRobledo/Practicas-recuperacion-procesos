@@ -1,16 +1,19 @@
 package com.psp.ejercicio6;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
 		int x = 1;
 		int y = 2000;
 		long t0 = (new Date()).getTime();
-		Contador c = new Contador();
+		Contador contador = new Contador();
+		List<Integer> listaPares = new ArrayList<Integer>();
 		
-		CuentaPares cp = new CuentaPares(c);
-		DeterminaPar dp = new DeterminaPar();
+		CuentaPares cp = new CuentaPares(listaPares, contador);
+		DeterminaPar dp = new DeterminaPar(listaPares);
 	
 		Thread hilo1 = new Thread(cp);
 		Thread hilo2 = new Thread(dp);
@@ -34,6 +37,6 @@ public class Main {
 		
 		long t1 = (new Date()).getTime();
 		long time = t1 - t0;
-		System.out.println("Número de pares en el intervalo: "+x+" - "+y+" es igual a " + cp.cont.getCuenta() + " calculado en "+time+ " milisegundos");
+		System.out.println("Número de pares en el intervalo: "+x+" - "+y+" es igual a " + contador.getCuenta() + " calculado en "+time+ " milisegundos");
 	}
 }

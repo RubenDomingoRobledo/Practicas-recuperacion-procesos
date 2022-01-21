@@ -1,26 +1,33 @@
 package com.psp.ejercicio6;
 
+import java.util.List;
+
 public class CuentaPares implements Runnable{
 	Contador cont = new Contador();
-	DeterminaPar dp = new DeterminaPar();
+	private final List<Integer> listaPares;
 	
-	public CuentaPares(Contador c) {
-		this.cont = c;
+	public CuentaPares(List<Integer> listaParesCompartida, Contador cont) {
+		this.listaPares = listaParesCompartida;
+		this.cont = cont;
 	}
 	
 	@Override
 	public void run() {	
-		for (int i = 1; i <= 1000; i++) { 
-			if (dp.isPar() == true) {
-				cont.incrementaPares();
-			}
-			else if (dp.isPar() == false) {
+		contarPar();
+	}
+	
+	private void contarPar() {
+		synchronized (listaPares) {
+			while (listaPares.isEmpty()) {
 				try {
-					wait();
+					listaPares.wait();
 				} 
 				catch (InterruptedException e) {
 					e.printStackTrace();
-				}
+			    }
+			}
+			for (int i= 0 ; i< listaPares.size(); i++) {
+				cont.incrementaPares();
 			}
 		}
 	}

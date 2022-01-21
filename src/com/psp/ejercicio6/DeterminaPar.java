@@ -1,23 +1,28 @@
 package com.psp.ejercicio6;
 
-public class DeterminaPar implements Runnable{
-	boolean par;
-	
-	public synchronized boolean isPar() {
-		return par;
-	}
+import java.util.List;
 
-	public synchronized void setPar(boolean par) {
-		this.par = par;
+public class DeterminaPar implements Runnable{
+	private final List<Integer> listaPares;
+	
+	public DeterminaPar(List<Integer> listaParesCompartida) {
+		this.listaPares = listaParesCompartida;
 	}
 
 	@Override
 	public void run() {	
 		for (int i = 1; i <= 1000; i++) { 
-			if (i % 2 == 0) {
-				System.out.println(i +" es par");
-				setPar(true);
-			}
+			esPar(i);
 		}
 	}
+	
+	private void esPar(int num) {
+	      synchronized (listaPares) {
+	         if (num % 2 == 0) {
+	        	System.out.println(num +" es par");
+	        	listaPares.add(num);
+	        	listaPares.notifyAll();
+	         }
+	      }
+	   }
 }
