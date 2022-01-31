@@ -2,13 +2,15 @@ package com.psp.ejercicio5;
 
 class CuentaPares implements Runnable{
 	Contador cont = new Contador();
-	private int rango;
+	private int inicio;
+	private int fin;
 	private int cuenta;
 
-	CuentaPares(int rango, Contador c) {
-	    this.rango = rango;
-	    this.cont = c;
-	  }
+	public CuentaPares(int inicio, int fin, Contador cont) {
+		this.inicio= inicio;
+		this.fin= fin;
+		this.cont= cont;
+	}
 	
 	public int getCuenta() {
 		return cuenta;
@@ -16,7 +18,7 @@ class CuentaPares implements Runnable{
 
 	@Override
 	public void run() {		
-		for (int i = 1; i <= rango; i++) {
+		for (int i = inicio; i <= fin; i++) {
 			if (i % 2 == 0) {
 				cont.incrementa();
 				System.out.println(i+" es par");

@@ -13,7 +13,7 @@ public class Main {
 		int nHilos= 5;
 		Thread[] hilos = new Thread[nHilos];
 		for (int i = 0; i < nHilos; i++) {
-			Thread hilo = new Thread(new CuentaPares(y/nHilos, contador));
+			Thread hilo = new Thread(new CuentaPares(1,y/nHilos, contador));
 		    hilo.start();
 		    hilos[i] = hilo;
 		}
@@ -33,7 +33,7 @@ public class Main {
 		System.out.println("------------------------\n");
 
 		for (int i = 0; i < nHilos; i++) {
-			Thread hilo = new Thread(new CuentaPares2(y/nHilos, contador2));
+			Thread hilo = new Thread(new CuentaPares2(1,y/nHilos, contador2));
 		    hilo.start();
 		    hilos[i] = hilo;
 		}

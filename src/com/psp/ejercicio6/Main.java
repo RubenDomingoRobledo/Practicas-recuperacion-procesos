@@ -1,42 +1,26 @@
 package com.psp.ejercicio6;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
-	public static void main(String[] args) {
-		int x = 1;
-		int y = 2000;
-		long t0 = (new Date()).getTime();
-		Contador contador = new Contador();
-		List<Integer> listaPares = new ArrayList<Integer>();
-		
-		CuentaPares cp = new CuentaPares(listaPares, contador);
-		DeterminaPar dp = new DeterminaPar(listaPares);
 	
-		Thread hilo1 = new Thread(cp);
-		Thread hilo2 = new Thread(dp);
-		Thread hilo3 = new Thread(cp);
-		Thread hilo4 = new Thread(dp);
+	 public static void main(String[] args) {
+	      VariableCompartida variableCompartida = new VariableCompartida();
 
-		hilo1.start();
-		hilo2.start();
-		hilo3.start();
-		hilo4.start();
+	      AtomicInteger numeroDeProductoresCorriendo = new AtomicInteger(0);
 
-		try {
-			hilo1.join();
-			hilo2.join();
-			hilo3.join();
-			hilo4.join();
-		}
-		catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		long t1 = (new Date()).getTime();
-		long time = t1 - t0;
-		System.out.println("Número de pares en el intervalo: "+x+" - "+y+" es igual a " + contador.getCuenta() + " calculado en "+time+ " milisegundos");
-	}
+	      // a los productores y consumidores les pasamos la misma referencia al objeto variables compartida
+	      // todos modificaran los valores de la misma instancia variableCompartida
+	      Producer p1 = new Producer(variableCompartida, 1, 1000, numeroDeProductoresCorriendo);
+	      Producer p2 = new Producer(variableCompartida, 1001, 2000, numeroDeProductoresCorriendo);
+
+	      Consumer c1 = new Consumer(variableCompartida, numeroDeProductoresCorriendo);
+	      Consumer c2 = new Consumer(variableCompartida, numeroDeProductoresCorriendo);
+
+	      p1.start();
+	      p2.start();
+	      c1.start();
+	      c2.start();
+
+	   }
 }
