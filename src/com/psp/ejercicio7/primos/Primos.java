@@ -1,4 +1,4 @@
-package com.psp.ejercicio7;
+package com.psp.ejercicio7.primos;
 
 public class Primos implements Runnable{
 	private Contador contador;

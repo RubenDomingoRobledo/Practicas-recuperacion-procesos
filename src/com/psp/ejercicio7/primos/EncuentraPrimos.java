@@ -1,4 +1,4 @@
-package com.psp.ejercicio7;
+package com.psp.ejercicio7.primos;
 
 import java.util.Date;
 
@@ -7,11 +7,11 @@ public class EncuentraPrimos {
 	public static void main(String[] args) {
 		Contador cont = new Contador();
 		long t0 = (new Date()).getTime();
-		Thread hilo1 = new Thread(new Primos(1, 2000, cont));
-		Thread hilo2 = new Thread(new Primos(2001, 4000, cont));
-		Thread hilo3 = new Thread(new Primos(4001, 6000, cont));
-		Thread hilo4 = new Thread(new Primos(6001, 8000, cont));
-		Thread hilo5 = new Thread(new Primos(8001, 10000, cont));
+		Thread hilo1 = new Thread(new Primos(1, 20000, cont));
+		Thread hilo2 = new Thread(new Primos(20001, 40000, cont));
+		Thread hilo3 = new Thread(new Primos(40001, 60000, cont));
+		Thread hilo4 = new Thread(new Primos(60001, 80000, cont));
+		Thread hilo5 = new Thread(new Primos(80001, 100000, cont));
 
 		hilo1.start();
 		hilo2.start();

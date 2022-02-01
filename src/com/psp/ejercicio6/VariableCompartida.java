@@ -1,7 +1,5 @@
 package com.psp.ejercicio6;
 
-
-
 //logica para un productor consumidor que cuenta el numero de numeros pares
 public class VariableCompartida {
 	

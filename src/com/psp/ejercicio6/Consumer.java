@@ -25,11 +25,8 @@ public class Consumer extends Thread{
 	            int value = variableCompartida.consumir();
 
 	            variableCompartida.notifyAll();
-
-	            System.out.println("Consumer " + this.getId() + " got: " + value);
-
+	            System.out.println("Numero par detectado, el numero actual de pares es: "+value);
 	         }
 	      }
 	   }
-
 }

@@ -29,7 +29,8 @@ public class Producer extends Thread{
 	                  }
 	               }
 	               variableCompartida.producir(i);
-	               System.out.println("Producer " + this.getId() + " put: " + i);
+	               System.out.println("El numero "+i+ " es par. ");
+	               //System.out.println("Producer " + this.getId() + " put: " + i);
 	               variableCompartida.notifyAll();
 	            }
 	         }

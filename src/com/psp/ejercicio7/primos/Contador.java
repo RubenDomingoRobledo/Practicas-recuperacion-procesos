@@ -1,4 +1,4 @@
-package com.psp.ejercicio7;
+package com.psp.ejercicio7.primos;
 
 class Contador {
 
